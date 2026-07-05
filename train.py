@@ -46,6 +46,11 @@ def main():
 
     # Train
     trainer.train(config["steps"])
+    
+    # Generate
+    from generate import generate
+    output = generate(model, dataset, prompt="Holmes", max_new_tokens=200, temperature=0.8)
+    print(output)
 
 
 if __name__ == "__main__":
