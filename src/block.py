@@ -1,9 +1,9 @@
 import torch
 import torch.nn as nn
 
-from attention import MultiHeadAttention
-from rmsnorm import RMSNorm
-from swiglu import SwiGLU
+from src.attention import MultiHeadAttention
+from src.rmsnorm import RMSNorm
+from src.swiglu import SwiGLU
 
 
 class TransformerBlock(nn.Module):

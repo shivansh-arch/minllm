@@ -1,7 +1,7 @@
 from torch import nn
 import torch
 
-from rope import RoPE
+from src.rope import RoPE
 
 
 class MultiHeadAttention(nn.Module):

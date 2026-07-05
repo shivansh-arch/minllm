@@ -1,8 +1,8 @@
 import torch
 
-from dataset import TextDataset
-from model import MiniLM
-from trainer import Trainer
+from src.dataset import TextDataset
+from src.model import MiniLM
+from src.trainer import Trainer
 
 
 config = {
