@@ -48,9 +48,14 @@ def main():
     trainer.train(config["steps"])
     
     # Generate
-    from generate import generate
-    output = generate(model, dataset, prompt="Holmes", max_new_tokens=200, temperature=0.8)
-    print(output)
+    loss_history = trainer.train(config["steps"])
+
+    import json
+
+    with open("loss_history.json", "w") as f:
+        json.dump(loss_history, f)
+
+    torch.save(model.state_dict(), "model.pth")
 
 
 if __name__ == "__main__":
