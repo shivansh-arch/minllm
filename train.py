@@ -1,0 +1,52 @@
+import torch
+
+from dataset import TextDataset
+from model import MiniLM
+from trainer import Trainer
+
+
+config = {
+    "d_model": 256,
+    "n_heads": 8,
+    "n_layers": 6,
+    "hidden_dim": 512,
+    "context_length": 128,
+    "batch_size": 32,
+    "lr": 3e-4,
+    "steps": 5000,
+}
+
+
+def main():
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+
+    # Dataset
+    dataset = TextDataset(
+        file_path="holmes.txt",
+        split="train",
+        context_length=config["context_length"],
+        batch_size=config["batch_size"],
+    )
+
+    # Model
+    model = MiniLM(
+        vocab_size=dataset.vocab_size,
+        d_model=config["d_model"],
+        num_heads=config["n_heads"],
+        hidden_dim=config["hidden_dim"],
+        num_layers=config["n_layers"],
+    ).to(device)
+
+    # Trainer
+    trainer = Trainer(
+        model=model,
+        dataset=dataset,
+        lr=config["lr"],
+    )
+
+    # Train
+    trainer.train(config["steps"])
+
+
+if __name__ == "__main__":
+    main()
