@@ -45,7 +45,7 @@ def main():
     )
 
     # Train
-    trainer.train(config["steps"])
+    
     
     # Generate
     loss_history = trainer.train(config["steps"])

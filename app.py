@@ -1,11 +1,11 @@
 import json
 import matplotlib.pyplot as plt
-import streamlit as st
+import streamlit as st  # type: ignore[import]
 import torch
 
-from dataset import TextDataset
+from src.dataset import TextDataset
 from generate import generate
-from model import MiniLM
+from src.model import MiniLM
 
 
 # -------------------------
